@@ -70,13 +70,6 @@
     "completed": false
   },
   {
-    "id": "1736595600011",
-    "task": "Olah Raga Pagi",
-    "category": "Kesehatan",
-    "dueDate": "2026-01-02",
-    "completed": true
-  },
-  {
     "id": "1736682000012",
     "task": "Refactoring Kode Controller",
     "category": "Kerja",
@@ -235,7 +228,7 @@
     "task": "Belanja Mingguan",
     "category": "Umum",
     "dueDate": "2026-03-26",
-    "completed": false
+    "completed": true
   },
   {
     "id": "1738669200035",
