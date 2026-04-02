@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nobuka | Todo List</title>
+    <title>Nobuka | Todo List Support by EAJ Core</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <link rel="icon" href="/img/eaj-fav.png">
@@ -53,18 +53,24 @@
 <div class="container py-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            Support by <img src="/img/eaj.png" width="100">v1.0
+            Support by <img src="/img/eaj.png" width="100">v1.1
             <h1 class="header-title display-4 text-center">Nobuka</h1>
             <p class="text-center">Manage your daily activity with 😊</p>
 
             <div class="category-scroll mb-4 text-center">
                 <div class="nav nav-pills d-inline-flex gap-2">
-                    <a href="/" class="nav-link border <%= activeCat === 'Semua' ? 'active text-white' : '' %>">Semua</a>
+                    <a href="/?cat=Semua&status=<%= currentStatus %>" 
+                    class="nav-link border <%= activeCat === 'Semua' ? 'active text-white' : '' %>">
+                    Semua
+                    </a>
+
                     <% categories.forEach(cat => { %>
-                        <a href="/?cat=<%= cat %>" class="nav-link border <%= activeCat === cat ? 'active text-white' : '' %>">
+                        <a href="/?cat=<%= cat %>&status=<%= currentStatus %>" 
+                        class="nav-link border <%= activeCat === cat ? 'active text-white' : '' %>">
                             <%= cat %>
                         </a>
                     <% }) %>
+                    
                     <button class="btn btn-outline-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#catModal">
                         <i class="bi bi-plus"></i>
                     </button>
@@ -76,7 +82,7 @@
                     <form action="/add" method="POST">
                         <div class="row g-2">
                             <div class="col-12 mb-2">
-                                <input type="text" name="task" class="form-control form-control-lg border-0 shadow-none" placeholder="Tugas baru..." required style="background: #f1f3f5;">
+                                <input type="text" name="task" class="form-control form-control-lg border-0 shadow-none" placeholder="Tugas baru..." required style="background: #f1f3f5;" autocomplete="off">
                             </div>
                             <div class="col-md-6">
                                 <select name="category" class="form-select border-0 shadow-none" style="background: #f1f3f5;">
@@ -96,28 +102,53 @@
                 </div>
             </div>
 
+            <div class="d-flex justify-content-center gap-3 mb-4">
+                <a href="/?cat=<%= activeCat %>&status=active" 
+                class="btn btn-sm <%= currentStatus === 'active' ? 'btn-primary' : 'btn-outline-primary' %> rounded-pill px-3">
+                    Tugas Aktif
+                </a>
+
+                <a href="/?cat=<%= activeCat %>&status=done" 
+                class="btn btn-sm <%= currentStatus === 'done' ? 'btn-success' : 'btn-outline-success' %> rounded-pill px-3">
+                    Selesai <i class="bi bi-check-all"></i>
+                </a>
+            </div>
+
             <div class="card todo-card">
                 <ul class="list-group list-group-flush rounded-3">
-                    <% todos.forEach(todo => { %>
-                        <li class="list-group-item d-flex justify-content-between align-items-center py-3">
-                            <div class="d-flex align-items-center">
-                                <form action="/toggle/<%= todo.id %>" method="POST" class="me-3">
-                                    <button type="submit" class="btn btn-sm p-0 border-0">
-                                        <i class="bi <%= todo.completed ? 'bi-check-circle-fill text-success' : 'bi-circle text-secondary' %> fs-4"></i>
-                                    </button>
-                                </form>
-                                <div>
-                                    <span class="<%= todo.completed ? 'completed-task' : 'fw-medium' %> d-block"><%= todo.task %></span>
-                                    <small class="badge bg-light text-dark border-0 p-0 text-muted" style="font-size: 0.75rem;">
-                                        <%= todo.category %> • <i class="bi bi-calendar-event"></i> <%= todo.dueDate || 'Kapan saja' %>
-                                    </small>
-                                </div>
-                            </div>
-                            <form action="/delete/<%= todo.id %>" method="POST">
-                                <button type="submit" class="btn btn-sm text-danger opacity-50"><i class="bi bi-trash3"></i></button>
-                            </form>
+                    <% if (todos.length === 0) { %>
+                        <li class="list-group-item text-center py-5 text-muted">
+                            <i class="bi bi-emoji-smile fs-1 d-block mb-2"></i>
+                            Tidak ada tugas <%= currentStatus === 'done' ? 'yang selesai' : 'aktif' %> di sini.
                         </li>
-                    <% }) %>
+                    <% } else { %>
+                        <% todos.forEach(todo => { %>
+                            <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+                                <div class="d-flex align-items-center">
+                                    <form action="/toggle/<%= todo.id %>" method="POST" class="me-3">
+                                        <input type="hidden" name="currentStatus" value="<%= currentStatus %>">
+                                        <button type="submit" class="btn btn-sm p-0 border-0">
+                                            <i class="bi <%= todo.completed ? 'bi-check-circle-fill text-success' : 'bi-circle text-secondary' %> fs-4"></i>
+                                        </button>
+                                    </form>
+                                    
+                                    <div>
+                                        <span class="<%= todo.completed ? 'completed-task' : 'fw-medium' %> d-block text-break">
+                                            <%= todo.task %>
+                                        </span>
+                                        <small class="text-muted" style="font-size: 0.75rem;">
+                                            <span class="badge bg-light text-dark border fw-normal"><%= todo.category %></span>
+                                            • <i class="bi bi-calendar-event"></i> <%= todo.dueDate || 'Kapan saja' %>
+                                        </small>
+                                    </div>
+                                </div>
+
+                                <form action="/delete/<%= todo.id %>" method="POST" onsubmit="return confirm('Hapus tugas ini?')">
+                                    <button type="submit" class="btn btn-sm text-danger opacity-50"><i class="bi bi-trash3"></i></button>
+                                </form>
+                            </li>
+                        <% }) %>
+                    <% } %>
                 </ul>
             </div>
         </div>
