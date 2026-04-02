@@ -44,7 +44,7 @@ exports.deleteTodo = (req, res) => {
     let todos = storage.getTodos();
     todos = todos.filter(t => t.id !== req.params.id);
     storage.saveTodos(todos);
-    res.redirect('/');
+    res.redirect('/?msg=delete_success');
 };
 
 exports.toggleTodo = (req, res) => {
@@ -54,7 +54,12 @@ exports.toggleTodo = (req, res) => {
         todo.completed = !todo.completed;
         storage.saveTodos(todos);
     }
-    res.redirect('/');
+    
+    if(todo.completed){
+        res.redirect('/?msg=done_success');
+    }else{
+        res.redirect('/');
+    }
 };
 
 exports.addCategory = (req, res) => {

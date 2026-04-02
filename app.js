@@ -18,5 +18,5 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', webRoutes);
 
 app.listen(PORT, () => {
-    console.log(`Server lari di http://localhost:${PORT}`);
+    console.log(`Server RUN!`);
 });

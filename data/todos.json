@@ -1,1 +1,352 @@
-[]
+[
+  {
+    "id": "1735731600001",
+    "task": "Evaluasi Project Akhir Tahun",
+    "category": "Kerja",
+    "dueDate": "2026-01-05",
+    "completed": true
+  },
+  {
+    "id": "1735818000002",
+    "task": "Beli Buku Psikologi",
+    "category": "Pribadi",
+    "dueDate": "2026-01-15",
+    "completed": true
+  },
+  {
+    "id": "1735904400003",
+    "task": "Belajar Matematika Logika",
+    "category": "Belajar",
+    "dueDate": "2026-01-31",
+    "completed": true
+  },
+  {
+    "id": "1735990800004",
+    "task": "Meeting Client EAJ Core",
+    "category": "Kerja",
+    "dueDate": "2026-02-10",
+    "completed": true
+  },
+  {
+    "id": "1736077200005",
+    "task": "Medical Checkup Rutin",
+    "category": "Kesehatan",
+    "dueDate": "2026-02-20",
+    "completed": true
+  },
+  {
+    "id": "1736163600006",
+    "task": "Bayar Tagihan Internet",
+    "category": "Umum",
+    "dueDate": "2026-03-01",
+    "completed": true
+  },
+  {
+    "id": "1736250000007",
+    "task": "Belajar IPA Dasar",
+    "category": "Belajar",
+    "dueDate": "2026-03-14",
+    "completed": true
+  },
+  {
+    "id": "1736336400008",
+    "task": "Update Portofolio Web",
+    "category": "Kerja",
+    "dueDate": "2026-03-25",
+    "completed": true
+  },
+  {
+    "id": "1736422800009",
+    "task": "Belajar Psikologi Lanjutan",
+    "category": "Pribadi",
+    "dueDate": "2026-04-02",
+    "completed": false
+  },
+  {
+    "id": "1736509200010",
+    "task": "Persiapan Deploy Capacitor",
+    "category": "Kerja",
+    "dueDate": "2026-04-03",
+    "completed": false
+  },
+  {
+    "id": "1736595600011",
+    "task": "Olah Raga Pagi",
+    "category": "Kesehatan",
+    "dueDate": "2026-01-02",
+    "completed": true
+  },
+  {
+    "id": "1736682000012",
+    "task": "Refactoring Kode Controller",
+    "category": "Kerja",
+    "dueDate": "2026-01-10",
+    "completed": true
+  },
+  {
+    "id": "1736768400013",
+    "task": "Beli Kebutuhan Dapur",
+    "category": "Umum",
+    "dueDate": "2026-01-12",
+    "completed": true
+  },
+  {
+    "id": "1736854800014",
+    "task": "Kursus UI/UX Design",
+    "category": "Belajar",
+    "dueDate": "2026-01-20",
+    "completed": true
+  },
+  {
+    "id": "1736941200015",
+    "task": "Service Motor",
+    "category": "Umum",
+    "dueDate": "2026-01-25",
+    "completed": true
+  },
+  {
+    "id": "1737027600016",
+    "task": "Workout 30 Menit",
+    "category": "Kesehatan",
+    "dueDate": "2026-02-01",
+    "completed": true
+  },
+  {
+    "id": "1737114000017",
+    "task": "Planning Sprint 1",
+    "category": "Kerja",
+    "dueDate": "2026-02-05",
+    "completed": true
+  },
+  {
+    "id": "1737200400018",
+    "task": "Baca Jurnal Psikologi",
+    "category": "Belajar",
+    "dueDate": "2026-02-08",
+    "completed": true
+  },
+  {
+    "id": "1737286800019",
+    "task": "Cukur Rambut",
+    "category": "Pribadi",
+    "dueDate": "2026-02-12",
+    "completed": true
+  },
+  {
+    "id": "1737373200020",
+    "task": "Bayar Listrik",
+    "category": "Umum",
+    "dueDate": "2026-02-15",
+    "completed": true
+  },
+  {
+    "id": "1737459600021",
+    "task": "Daily Standup Meeting",
+    "category": "Kerja",
+    "dueDate": "2026-02-18",
+    "completed": true
+  },
+  {
+    "id": "1737546000022",
+    "task": "Latihan Soal IPA",
+    "category": "Belajar",
+    "dueDate": "2026-02-22",
+    "completed": true
+  },
+  {
+    "id": "1737632400023",
+    "task": "Yoga Sore",
+    "category": "Kesehatan",
+    "dueDate": "2026-02-25",
+    "completed": true
+  },
+  {
+    "id": "1737718800024",
+    "task": "Beli Hosting & Domain",
+    "category": "Kerja",
+    "dueDate": "2026-03-02",
+    "completed": true
+  },
+  {
+    "id": "1737805200025",
+    "task": "Review Buku Ekonomi",
+    "category": "Belajar",
+    "dueDate": "2026-03-05",
+    "completed": true
+  },
+  {
+    "id": "1737891600026",
+    "task": "Check-up Dokter Gigi",
+    "category": "Kesehatan",
+    "dueDate": "2026-03-10",
+    "completed": true
+  },
+  {
+    "id": "1737978000027",
+    "task": "Makan Malam Keluarga",
+    "category": "Pribadi",
+    "dueDate": "2026-03-12",
+    "completed": true
+  },
+  {
+    "id": "1738064400028",
+    "task": "Update Library Node.js",
+    "category": "Kerja",
+    "dueDate": "2026-03-15",
+    "completed": true
+  },
+  {
+    "id": "1738150800029",
+    "task": "Belajar Dasar Capacitor",
+    "category": "Belajar",
+    "dueDate": "2026-03-18",
+    "completed": true
+  },
+  {
+    "id": "1738237200030",
+    "task": "Lari Pagi 5km",
+    "category": "Kesehatan",
+    "dueDate": "2026-03-20",
+    "completed": true
+  },
+  {
+    "id": "1738323600031",
+    "task": "Fix Bug CSS Layout",
+    "category": "Kerja",
+    "dueDate": "2026-03-22",
+    "completed": true
+  },
+  {
+    "id": "1738410000032",
+    "task": "Bersihkan Meja Kerja",
+    "category": "Umum",
+    "dueDate": "2026-03-23",
+    "completed": true
+  },
+  {
+    "id": "1738496400033",
+    "task": "Nonton Webinar Tech",
+    "category": "Belajar",
+    "dueDate": "2026-03-24",
+    "completed": true
+  },
+  {
+    "id": "1738582800034",
+    "task": "Belanja Mingguan",
+    "category": "Umum",
+    "dueDate": "2026-03-26",
+    "completed": false
+  },
+  {
+    "id": "1738669200035",
+    "task": "Meeting Koordinasi Tim",
+    "category": "Kerja",
+    "dueDate": "2026-03-27",
+    "completed": false
+  },
+  {
+    "id": "1738755600036",
+    "task": "Minum Vitamin",
+    "category": "Kesehatan",
+    "dueDate": "2026-03-28",
+    "completed": false
+  },
+  {
+    "id": "1738842000037",
+    "task": "Baca Dokumentasi Swal2",
+    "category": "Belajar",
+    "dueDate": "2026-03-29",
+    "completed": false
+  },
+  {
+    "id": "1738928400038",
+    "task": "Refleksi Diri Mingguan",
+    "category": "Pribadi",
+    "dueDate": "2026-03-30",
+    "completed": false
+  },
+  {
+    "id": "1739014800039",
+    "task": "Submit Laporan Bulanan",
+    "category": "Kerja",
+    "dueDate": "2026-03-31",
+    "completed": false
+  },
+  {
+    "id": "1739101200040",
+    "task": "Planning Target April",
+    "category": "Pribadi",
+    "dueDate": "2026-04-01",
+    "completed": false
+  },
+  {
+    "id": "1739187600041",
+    "task": "Testing EJS View",
+    "category": "Kerja",
+    "dueDate": "2026-04-02",
+    "completed": false
+  },
+  {
+    "id": "1739274000042",
+    "task": "Beli Kopi Stok Kantor",
+    "category": "Umum",
+    "dueDate": "2026-04-04",
+    "completed": false
+  },
+  {
+    "id": "1739360400043",
+    "task": "Gym Session",
+    "category": "Kesehatan",
+    "dueDate": "2026-04-05",
+    "completed": false
+  },
+  {
+    "id": "1739446800044",
+    "task": "Belajar Database NoSQL",
+    "category": "Belajar",
+    "dueDate": "2026-04-06",
+    "completed": false
+  },
+  {
+    "id": "1739533200045",
+    "task": "Update Keamanan Server",
+    "category": "Kerja",
+    "dueDate": "2026-04-07",
+    "completed": false
+  },
+  {
+    "id": "1739619600046",
+    "task": "Mencuci Mobil",
+    "category": "Umum",
+    "dueDate": "2026-04-08",
+    "completed": false
+  },
+  {
+    "id": "1739706000047",
+    "task": "Meditasi Malam",
+    "category": "Kesehatan",
+    "dueDate": "2026-04-09",
+    "completed": false
+  },
+  {
+    "id": "1739792400048",
+    "task": "Eksperimen API Baru",
+    "category": "Kerja",
+    "dueDate": "2026-04-10",
+    "completed": false
+  },
+  {
+    "id": "1739878800049",
+    "task": "Sortir Email Masuk",
+    "category": "Umum",
+    "dueDate": "2026-04-11",
+    "completed": false
+  },
+  {
+    "id": "1739965200050",
+    "task": "Review Progress Q1",
+    "category": "Kerja",
+    "dueDate": "2026-04-12",
+    "completed": false
+  }
+]
