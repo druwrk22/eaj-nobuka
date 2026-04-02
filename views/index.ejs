@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nobuka | Todo List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="icon" href="/img/eaj-fav.png">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .todo-card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .completed-task {
+            text-decoration: line-through;
+            color: #adb5bd;
+        }
+        .list-group-item {
+            border-left: none;
+            border-right: none;
+            padding: 1rem 1.25rem;
+            transition: all 0.2s;
+        }
+        .list-group-item:hover {
+            background-color: #fcfcfc;
+        }
+        .btn-check-custom {
+            color: #198754;
+            border-color: #198754;
+        }
+        .btn-check-custom:hover {
+            background-color: #198754;
+            color: white;
+        }
+        .header-title {
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: #212529;
+        }
+        .nav-pills .nav-link.active { background-color: #0d6efd; border-radius: 10px; }
+        .nav-link { color: #6c757d; font-weight: 500; }
+        .category-scroll { overflow-x: auto; white-space: nowrap; padding-bottom: 5px; }
+    </style>
+</head>
+<body>
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            Support by <img src="/img/eaj.png" width="100">v1.0
+            <h1 class="header-title display-4 text-center">Nobuka</h1>
+            <p class="text-center">Manage your daily activity with 😊</p>
+
+            <div class="category-scroll mb-4 text-center">
+                <div class="nav nav-pills d-inline-flex gap-2">
+                    <a href="/" class="nav-link border <%= activeCat === 'Semua' ? 'active text-white' : '' %>">Semua</a>
+                    <% categories.forEach(cat => { %>
+                        <a href="/?cat=<%= cat %>" class="nav-link border <%= activeCat === cat ? 'active text-white' : '' %>">
+                            <%= cat %>
+                        </a>
+                    <% }) %>
+                    <button class="btn btn-outline-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#catModal">
+                        <i class="bi bi-plus"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="card todo-card mb-4">
+                <div class="card-body p-4">
+                    <form action="/add" method="POST">
+                        <div class="row g-2">
+                            <div class="col-12 mb-2">
+                                <input type="text" name="task" class="form-control form-control-lg border-0 shadow-none" placeholder="Tugas baru..." required style="background: #f1f3f5;">
+                            </div>
+                            <div class="col-md-6">
+                                <select name="category" class="form-select border-0 shadow-none" style="background: #f1f3f5;">
+                                    <% categories.forEach(cat => { %>
+                                        <option value="<%= cat %>"><%= cat %></option>
+                                    <% }) %>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="date" name="dueDate" class="form-control border-0 shadow-none" style="background: #f1f3f5;">
+                            </div>
+                            <div class="col-md-2">
+                                <button type="submit" class="btn btn-primary w-100 h-100 rounded-3"><i class="bi bi-plus-lg"></i></button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="card todo-card">
+                <ul class="list-group list-group-flush rounded-3">
+                    <% todos.forEach(todo => { %>
+                        <li class="list-group-item d-flex justify-content-between align-items-center py-3">
+                            <div class="d-flex align-items-center">
+                                <form action="/toggle/<%= todo.id %>" method="POST" class="me-3">
+                                    <button type="submit" class="btn btn-sm p-0 border-0">
+                                        <i class="bi <%= todo.completed ? 'bi-check-circle-fill text-success' : 'bi-circle text-secondary' %> fs-4"></i>
+                                    </button>
+                                </form>
+                                <div>
+                                    <span class="<%= todo.completed ? 'completed-task' : 'fw-medium' %> d-block"><%= todo.task %></span>
+                                    <small class="badge bg-light text-dark border-0 p-0 text-muted" style="font-size: 0.75rem;">
+                                        <%= todo.category %> • <i class="bi bi-calendar-event"></i> <%= todo.dueDate || 'Kapan saja' %>
+                                    </small>
+                                </div>
+                            </div>
+                            <form action="/delete/<%= todo.id %>" method="POST">
+                                <button type="submit" class="btn btn-sm text-danger opacity-50"><i class="bi bi-trash3"></i></button>
+                            </form>
+                        </li>
+                    <% }) %>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="catModal" tabindex="-1">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content border-0 shadow">
+            <div class="modal-header border-0">
+                <h5 class="modal-title fw-bold">Kelola Kategori</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <ul class="list-group list-group-flush mb-3">
+                    <% categories.forEach(cat => { %>
+                        <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                            <span><%= cat %></span>
+                            <% if (cat !== 'Umum') { %>
+                                <form action="/categories/delete" method="POST" onsubmit="return confirm('Hapus kategori ini? Tugas terkait akan dipindah ke Umum.')">
+                                    <input type="hidden" name="categoryName" value="<%= cat %>">
+                                    <button type="submit" class="btn btn-link btn-sm text-danger p-0 border-0">
+                                        <i class="bi bi-x-circle"></i>
+                                    </button>
+                                </form>
+                            <% } %>
+                        </li>
+                    <% }) %>
+                </ul>
+
+                <hr>
+                
+                <form action="/categories" method="POST">
+                    <label class="small text-muted mb-2">Tambah Baru:</label>
+                    <div class="input-group">
+                        <input type="text" name="newCategory" class="form-control form-control-sm" placeholder="Nama..." required>
+                        <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
